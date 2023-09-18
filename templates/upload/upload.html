@@ -14,8 +14,9 @@
         <div class="mb-3">
             <label for="objectSelection" class="form-label">Select Objects to Detect</label>
             <select class="form-select" id="objectSelection" name="selected_objects">
-                <option value="car">Car</option>
-                <option value="person">Person</option>
+                {% for name in object_names  %}
+                <option value="{{ name }}">{{ name }}</option>
+             {% endfor %}
             </select>
 
         </div>

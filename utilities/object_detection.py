@@ -33,7 +33,7 @@ def perform_object_detection(image_path, _class):
     for pred in filtered_predictions:
         x, y, width, height = pred['x'], pred['y'], pred['width'], pred['height']
          # Convert the coordinates to integers
-        x, y, width, height = double(x)-100, double(y)-50, double(width), double(height)
+        x, y, width, height = double(x)-100, double(y)-100, double(width), double(height)
         draw.rectangle([x, y, x + width, y + height], outline='red', width=3)
 
     # Save the modified image as a temporary image
