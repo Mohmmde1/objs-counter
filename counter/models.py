@@ -1,12 +1,13 @@
 from django.db import models
+from image_handling.models import SubmittedFormData  # Import the model associated with image submissions
 
-# from image_handling.models import UploadedImage
+class DetectionResult(models.Model):
+    submission = models.ForeignKey(SubmittedFormData, on_delete=models.CASCADE)
+    detected_objects = models.TextField()
+    image = models.ImageField(upload_to='detection_results/')  
 
-# class DetectedObject(models.Model):
-#     uploaded_image = models.ForeignKey(UploadedImage, on_delete=models.CASCADE)
-#     class_name = models.CharField(max_length=255)
-#     confidence = models.FloatField()
-#     selected_objects = models.JSONField()  # Store selected objects as a JSON array
+    # Additional fields, if needed
+    detection_date = models.DateTimeField(auto_now_add=True)
 
-#     def __str__(self):
-#         return f"{self.class_name} (Confidence: {self.confidence})"
+    def __str__(self):
+        return f"Detection Result #{self.pk} for Form Submission #{self.submission.pk}"
