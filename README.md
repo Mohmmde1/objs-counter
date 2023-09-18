@@ -12,7 +12,7 @@ ObjCounter is an excellent starting point for developers interested in building 
 
 ## Table of Contents
 
-- [Project Name](#project-name)
+- [Objs Counter](#project-name)
   - [Table of Contents](#table-of-contents)
   - [Getting Started](#getting-started)
     - [Prerequisites](#prerequisites)
@@ -30,7 +30,7 @@ Must have  Robolflow Account, python, pipenv
 
 ### Installation
 
-Step-by-step instructions on how to install and set up your project:
+Step-by-step instructions on how to install and set up the project:
 
 ```bash
 # Clone this repository
