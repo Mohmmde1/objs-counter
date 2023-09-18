@@ -1,4 +1,5 @@
 from decouple import config
+from numpy import double
 from roboflow import Roboflow
 import os
 from PIL import Image, ImageDraw
@@ -16,7 +17,7 @@ model = project.version(9).model
 
 def perform_object_detection(image_path, _class):
     # Perform object detection on the image
-    prediction = model.predict(image_path, confidence=40, overlap=30)
+    prediction = model.predict(image_path, confidence=10, overlap=30)
 
     # Filter the predictions to include only the specified _class
     filtered_predictions = [
@@ -31,6 +32,8 @@ def perform_object_detection(image_path, _class):
     # Draw boxes only for the specified _class
     for pred in filtered_predictions:
         x, y, width, height = pred['x'], pred['y'], pred['width'], pred['height']
+         # Convert the coordinates to integers
+        x, y, width, height = double(x)-100, double(y)-50, double(width), double(height)
         draw.rectangle([x, y, x + width, y + height], outline='red', width=3)
 
     # Save the modified image as a temporary image

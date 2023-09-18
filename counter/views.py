@@ -13,7 +13,6 @@ def count(request, form_id):
 
     # Perform object detection logic on the uploaded image
     detection_results = perform_object_detection(uploaded_image.path, submission.selected_objects)
-    print(submission.selected_objects)
     
     # Create a ContentFile from the image data
     image_data = ContentFile(detection_results["image"], name="prediction.jpg")
@@ -25,6 +24,7 @@ def count(request, form_id):
     # Pass the results to the template for rendering
     context = {
         'detection_result': detection_result,
+        'count': len(detection_results['json']['predictions'])
     }
 
     return render(request, 'count/count.html', context)
