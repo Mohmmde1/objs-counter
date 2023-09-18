@@ -23,8 +23,7 @@ def count(request, form_id):
     
     # Pass the results to the template for rendering
     context = {
-        'uploaded_image': uploaded_image,
-        'detection_results': detection_results,
+        'detection_result': detection_result,
     }
 
     return render(request, 'count/count.html', context)

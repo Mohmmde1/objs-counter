@@ -5,13 +5,11 @@
   
   <!-- Display the detected objects as JSON -->
   <h2>Detected Objects (JSON):</h2>
-  <pre>{{ detection_results.json|safe }}</pre>
+  <pre>{{ detection_result.detected_objects }}</pre>
 
   <!-- Display the detected image -->
   <h2>Detected Image:</h2>
-  {% comment %} <img src="data:image/jpeg;base64,{{ detection_results.image|base64 }}" alt="Detected Image"> {% endcomment %}
-
-  <br>
+  <img src="{{ detection_result.image.url }}" alt="Detected Image">
 
   <!-- Link to go back to the upload page -->
   {% comment %} <a href="{% url 'upload' %}">Upload another image</a> {% endcomment %}
