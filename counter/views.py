@@ -12,7 +12,8 @@ def count(request, form_id):
     uploaded_image = submission.image
 
     # Perform object detection logic on the uploaded image
-    detection_results = perform_object_detection(uploaded_image.path)
+    detection_results = perform_object_detection(uploaded_image.path, submission.selected_objects)
+    print(submission.selected_objects)
     
     # Create a ContentFile from the image data
     image_data = ContentFile(detection_results["image"], name="prediction.jpg")

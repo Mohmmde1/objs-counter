@@ -1,8 +1,7 @@
 from decouple import config
 from roboflow import Roboflow
 import os
-import io
-import shutil
+from PIL import Image, ImageDraw
 
 # Read the API key from the environment variable
 api_key = config('ROBOFLOW_API_KEY')
@@ -13,14 +12,30 @@ rf = Roboflow(api_key=api_key)
 # Retrieve the project and model
 project = rf.workspace().project("microsoft-coco")
 model = project.version(9).model
-    
-def perform_object_detection(image_path):
+
+
+def perform_object_detection(image_path, _class):
     # Perform object detection on the image
     prediction = model.predict(image_path, confidence=40, overlap=30)
 
-    # Save the prediction result as a temporary image
+    # Filter the predictions to include only the specified _class
+    filtered_predictions = [
+        p for p in prediction.predictions if p['class'] == _class]
+
+    # Create a PIL image from the input image
+    input_image = Image.open(image_path)
+
+    # Create a drawing context to draw boxes on the image
+    draw = ImageDraw.Draw(input_image)
+
+    # Draw boxes only for the specified _class
+    for pred in filtered_predictions:
+        x, y, width, height = pred['x'], pred['y'], pred['width'], pred['height']
+        draw.rectangle([x, y, x + width, y + height], outline='red', width=3)
+
+    # Save the modified image as a temporary image
     temp_image_path = os.path.join('media', 'uploads', 'temp_prediction.jpg')
-    prediction.save(temp_image_path)
+    input_image.save(temp_image_path)
 
     # Read the temporary image data
     with open(temp_image_path, 'rb') as temp_image_file:
@@ -30,6 +45,6 @@ def perform_object_detection(image_path):
     os.remove(temp_image_path)
 
     return {
-        "json": prediction.json(),
+        "json": {"predictions": filtered_predictions},
         "image": image_data
     }
