@@ -7,14 +7,14 @@ import shutil
 # Read the API key from the environment variable
 api_key = config('ROBOFLOW_API_KEY')
 
-def perform_object_detection(image_path):
-    # Initialize the Roboflow client with the API key
-    rf = Roboflow(api_key=api_key)
+# Initialize the Roboflow client with the API key
+rf = Roboflow(api_key=api_key)
 
-    # Retrieve the project and model
-    project = rf.workspace().project("microsoft-coco")
-    model = project.version(9).model
+# Retrieve the project and model
+project = rf.workspace().project("microsoft-coco")
+model = project.version(9).model
     
+def perform_object_detection(image_path):
     # Perform object detection on the image
     prediction = model.predict(image_path, confidence=40, overlap=30)
 
