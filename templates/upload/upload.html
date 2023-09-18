@@ -1,0 +1,25 @@
+{% extends "base/base.html" %}
+
+{% block title %}Upload Image{% endblock %}
+
+{% block content %}
+<div class="container mt-4">
+    <h2>Upload an Image</h2>
+    <form method="post" enctype="multipart/form-data">
+        {% csrf_token %}
+        <div class="mb-3">
+            <label for="imageUpload" class="form-label">Select an Image</label>
+            <input type="file" class="form-control" id="imageUpload" name="image">
+        </div>
+        <div class="mb-3">
+            <label for="objectSelection" class="form-label">Select Objects to Detect</label>
+            <select class="form-select" id="objectSelection" name="selected_objects">
+                <option value="car">Car</option>
+                <option value="person">Person</option>
+            </select>
+
+        </div>
+        <button type="submit" class="btn btn-primary">Submit</button>
+    </form>
+</div>
+{% endblock %}

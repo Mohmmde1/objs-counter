@@ -1,13 +1,17 @@
-{% extends "templates/base/base.html" %}
+{% extends "base/base.html" %}
 
 {% block title %}Home Page{% endblock %}
 
 {% block content %}
-<div class="jumbotron">
-    <h1 class="display-4">Welcome to My Web App</h1>
-    <p class="lead">This is a simple example of a home page for your object detection application.</p>
-    <hr class="my-4">
-    <p>You can upload an image and detect objects of your choice.</p>
-    <a class="btn btn-primary btn-lg" href="/upload/" role="button">Get Started</a>
+<div class="container">
+    <div class="row justify-content-center">
+        <div class="col-md-8 text-center">
+            <h1 class="display-4">Welcome to Object Detection</h1>
+            <p class="lead">Detect objects in images with ease.</p>
+            <hr class="my-4">
+            <p>Upload an image and choose the objects to count.</p>
+            <a class="btn btn-primary btn-lg" href="/upload/" role="button">Get Started</a>
+        </div>
+    </div>
 </div>
 {% endblock %}

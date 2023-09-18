@@ -3,52 +3,59 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>{% block title %}My Web App{% endblock %}</title>
+    <title>{% block title %}Objects Detection Counter{% endblock %}</title>
+
     <!-- Include Bootstrap CSS from CDN -->
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.5.2/dist/css/bootstrap.min.css">
-    <!-- Include your CSS stylesheets here -->
-    {% comment %} <link rel="stylesheet" href="{% static 'css/style.css' %}"> {% endcomment %}
+<link
+       href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css"
+        rel="stylesheet"
+    > 
+
+    <!-- Custom CSS for Background and Styling -->
+    <style>
+        /* Customize the background color or add a background image */
+        body {
+            background-color: #f4f4f4; /* Light gray background color */
+            /* Uncomment the following line to add a background image */
+            /* background-image: url('/static/img/background.jpg'); */
+            /* background-size: cover; */
+        }
+
+        /* Additional custom styles can be added here */
+        /* Example: Change font color */
+        .text-primary {
+            color: #007bff; /* Blue text color */
+        }
+    </style>
 </head>
 <body>
-    <header>
-        <nav class="navbar navbar-expand-lg navbar-light bg-light">
-            <div class="container">
-                <a class="navbar-brand" href="/">My Web App</a>
-                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-                    <span class="navbar-toggler-icon"></span>
-                </button>
-                <div class="collapse navbar-collapse" id="navbarNav">
-                    <ul class="navbar-nav ml-auto">
-                        <li class="nav-item">
-                            <a class="nav-link" href="/">Home</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="/about/">About</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="/contact/">Contact</a>
-                        </li>
-                    </ul>
-                </div>
-            </div>
-        </nav>
-    </header>
-    <main>
-        <div class="container">
-            {% block content %}
-            <!-- Content for individual pages will be inserted here -->
-            {% endblock %}
+
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <div class="container">
+        <a class="navbar-brand" href="/">Objects Counter</a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+                aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav ml-auto">
+                <li class="nav-item">
+                    <a class="nav-link" href="/">Home</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/about/">About</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/contact/">Contact</a>
+                </li>
+            </ul>
         </div>
-    </main>
-    <footer class="mt-5">
-        <div class="container">
-            <!-- Footer content goes here -->
-            <p>&copy; {{ year }} My Web App</p>
-        </div>
-    </footer>
-    <!-- Include Bootstrap JavaScript from CDN -->
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.5.2/dist/js/bootstrap.min.js"></script>
-    <!-- Include your JavaScript scripts here -->
-    {% comment %} <script src="{% static 'js/script.js' %}"></script> {% endcomment %}
+    </div>
+</nav>
+
+<div class="container mt-4">
+    {% block content %}{% endblock %}
+</div>
+
 </body>
 </html>
