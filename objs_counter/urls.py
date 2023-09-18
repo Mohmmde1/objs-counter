@@ -16,8 +16,12 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path, include
 
+from django.conf import settings
+from django.conf.urls.static import static
+
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', include(('main_app.urls', 'main_app'), namespace='main_app')),
     path('upload/', include(('image_handling.urls', 'image_handling'), namespace='image_handling')),
-]
+    path('count/', include(('counter.urls', 'counter'), namespace='counter')),
+] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

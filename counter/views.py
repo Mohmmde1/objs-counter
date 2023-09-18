@@ -1,3 +1,5 @@
 from django.shortcuts import render
 
-# Create your views here.
+def count(request, form_id):
+    
+    return render(request, 'count/count.html')
