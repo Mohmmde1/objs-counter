@@ -34,7 +34,7 @@ Step-by-step instructions on how to install and set up your project:
 
 ```bash
 # Clone this repository
-git clone https://github.com/yourusername/your-project.git
+git clone https://github.com/Mohmmde1/objs-counter.git
 
 # Change directory to your project
 cd objs-counter
