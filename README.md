@@ -55,4 +55,4 @@ python manage.py migrate
 # Run the application
 python manage.py runserver
 
-# Configure environment variables: Create a `.env` file and add your roboflow API keys.
+# Configure environment variables: Make sure to create a `.env` file and add your roboflow API keys.
