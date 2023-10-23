@@ -1,6 +1,6 @@
 # Objs Counter
 
-ObjCounter is a web application built using Django that allows users to upload images and perform object detection on them and count the specified object. It uses a pre-trained deep learning model to identify objects within the uploaded images and provides users with information about the objects detected.
+ObjCounter is a web application built with Django that allows users to upload images and perform object detection on them and count the specified object. It uses a pre-trained deep learning model to identify objects within the uploaded images and provides users with information about the objects detected.
 
 Users can select from a list of predefined object classes to specify which objects they want the model to detect. After uploading an image, the application processes it, draws bounding boxes around the detected objects, and displays the results to the user. Additionally, it provides the option to download the processed image with the bounding boxes.
 
